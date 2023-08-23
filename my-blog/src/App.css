@@ -6,6 +6,17 @@
   height: 40vmin;
   pointer-events: none;
 }
+.buttons{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.postsCards{
+  width: 50vw;
+  height: max-content;
+  background-color: beige;
+  border-color: #282c34;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
