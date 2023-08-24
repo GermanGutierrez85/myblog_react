@@ -1,53 +1,69 @@
-const Posteos = () => {
+import { useState } from 'react';
 const posts = [
+  {
+    "id": 12,
+    "titulo": "Spiderman",
+    "texto": "Joven héroe con poderes arácnidos que combate el crimen balanceándose por Nueva York.",
+    "user_id": 7,
+    "usuario": "stan_lee"
+  },
+  {
+    "id": 14,
+    "titulo": "X-MEN",
+    "texto": "Equipo de mutantes con habilidades únicas que luchan por la coexistencia pacífica entre humanos y mutantes.",
+    "user_id": 7,
+    "usuario": "stan_lee"
+  },
+  {
+    "id": 16,
+    "titulo": "Capitán América",
+    "texto": "Soldado mejorado con un escudo indestructible que lidera a los Vengadores en la defensa del mundo.",
+    "user_id": 7,
+    "usuario": "stan_lee"
+  },
+  {
+    "id": 17,
+    "titulo": "Thanos",
+    "texto": "Titán obsesionado con el poder y las Gemas del Infinito, busca la aniquilación para equilibrar el universo.",
+    "user_id": 7,
+    "usuario": "stan_lee"
+  },
     {
-      "id": 12,
-      "titulo": "Spiderman",
-      "texto": "Joven héroe con poderes arácnidos que combate el crimen balanceándose por Nueva York.",
-      "user_id": 7,
-      "usuario": "stan_lee"
-    },
-    {
-      "id": 14,
-      "titulo": "X-MEN",
-      "texto": "Equipo de mutantes con habilidades únicas que luchan por la coexistencia pacífica entre humanos y mutantes.",
-      "user_id": 7,
-      "usuario": "stan_lee"
-    },
-    {
-      "id": 16,
-      "titulo": "Capitán América",
-      "texto": "Soldado mejorado con un escudo indestructible que lidera a los Vengadores en la defensa del mundo.",
-      "user_id": 7,
-      "usuario": "stan_lee"
-    },
-    {
-      "id": 17,
-      "titulo": "Thanos",
-      "texto": "Titán obsesionado con el poder y las Gemas del Infinito, busca la aniquilación para equilibrar el universo.",
-      "user_id": 7,
-      "usuario": "stan_lee"
-    },
-      {
-      "id": 18,
-      "titulo": "Ant-Man",
-      "texto": "Héroe capaz de encogerse y controlar insectos con un traje especial para combatir el mal.",
-      "user_id": 7,
-      "usuario": "stan_lee"
-    },
-  ]
+    "id": 18,
+    "titulo": "Ant-Man",
+    "texto": "Héroe capaz de encogerse y controlar insectos con un traje especial para combatir el mal.",
+    "user_id": 7,
+    "usuario": "stan_lee"
+  },
+]
+
+export default function Posteos(){
+  const [posteos, setPosteos] = useState(posts)
+
+
+ function handleSubmit(e){
+    e.preventDefault();
+   const newPost = {
+    id: (posts.length + 1),
+    titulo: e.target.titulo.value,
+    texto: e.target.texto.value,
+    user_id: Math.floor(Math.random()) + posts.length,
+    usuario: e.target.usuario.value,
+  };
+  setPosteos([...posteos, newPost])
+
+}
+  //Funciones para alertas de botones
   const handleRead = (num) =>{ 
     alert(`LEER posteo ID ${num}`);
   };
   const handleSet = (num) =>{ 
     alert(`MODIFICAR posteo ID ${num}`);
   }
-
-  
-  
-  const card = posts.map((post)=>(
-    <div className="postsCards">
-      <p key={post.id}>{post.titulo}</p>
+  //Renderizado de posteos
+  const card = posteos.map((post)=>(
+    <div className="postsCards" key={post.id}>
+      <p>{post.titulo}</p>
       <div className="buttons">
          <button onClick={(e)=>{
             e.preventDefault();
@@ -60,10 +76,16 @@ const posts = [
   ));
 
   return (
-    <div>
-        <h1>Posteos</h1>
-        {card}
-    </div>
+    <>
+    <form onSubmit={handleSubmit}>
+      <input type="text" name="nombre" placeholder="Nombre" />
+      <input type="text" name="titulo" placeholder="Titulo" />
+      <input type="text" name="texto" placeholder="Tu texto" />
+      <input type="submit" value="Guardar" />
+    </form>
+      <h1>Posteos</h1>
+      {card}
+    </>
   )
 }
-export default Posteos;
+
