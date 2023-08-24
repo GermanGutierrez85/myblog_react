@@ -38,19 +38,19 @@ const posts = [
 ]
 
 export default function Posteos(){
-  const [posteos, setPosteos] = useState(posts)
+  const [post, setPost] = useState(posts)
 
 
  function handleSubmit(e){
     e.preventDefault();
    const newPost = {
-    id: (posts.length + 1),
+    id: (post.length + 1),
     titulo: e.target.titulo.value,
     texto: e.target.texto.value,
-    user_id: Math.floor(Math.random()) + posts.length,
+    user_id: Math.floor(Math.random()) + post.length,
     usuario: e.target.usuario.value,
   };
-  setPosteos([...posteos, newPost])
+  setPost([...post, newPost])
 
 }
   //Funciones para alertas de botones
@@ -61,7 +61,7 @@ export default function Posteos(){
     alert(`MODIFICAR posteo ID ${num}`);
   }
   //Renderizado de posteos
-  const card = posteos.map((post)=>(
+  const card = post.map((post)=>(
     <div className="postsCards" key={post.id}>
       <p>{post.titulo}</p>
       <div className="buttons">
@@ -78,7 +78,7 @@ export default function Posteos(){
   return (
     <>
     <form onSubmit={handleSubmit}>
-      <input type="text" name="nombre" placeholder="Nombre" />
+      <input type="text" name="usuario" placeholder="Usuario" />
       <input type="text" name="titulo" placeholder="Titulo" />
       <input type="text" name="texto" placeholder="Tu texto" />
       <input type="submit" value="Guardar" />
