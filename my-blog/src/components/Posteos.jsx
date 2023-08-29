@@ -44,10 +44,10 @@ export default function Posteos(){
  function handleSubmit(e){
     e.preventDefault();
    const newPost = {
-    id: (post.length + 1),
+    id: Math.floor(Math.random()*1000) + post.length,
     titulo: e.target.titulo.value,
     texto: e.target.texto.value,
-    user_id: Math.floor(Math.random()) + post.length,
+    user_id: Math.floor(Math.random()*1000) + post.length,
     usuario: e.target.usuario.value,
   };
   setPost([...post, newPost])
