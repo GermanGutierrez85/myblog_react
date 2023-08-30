@@ -11,6 +11,9 @@ export default function Navbar() {
             <li>
                 <NavLink to="/posteos">Posteos</NavLink>
             </li>
+            <li>
+                <NavLink to="/crear">Crear</NavLink>
+            </li>
         </ul>
     </nav>
     <Outlet />

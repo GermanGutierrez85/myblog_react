@@ -1,7 +1,9 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from '../views/Home'
-import Posteos from '../components/Posteos'
+import Posteos from '../views/Posteos'
 import Navbar from '../components/NavBar/Navbar'
+import Crear from '../views/Crear'
+import LeerPost from '../views/LeerPost'
 
 
 export default function RoutesBlog() {
@@ -12,6 +14,8 @@ export default function RoutesBlog() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/posteos" element={<Posteos/>}/>
+            <Route path='/leer/:id' element={<LeerPost/>}/>
+            <Route path="/crear" element={<Crear/>}/>
         </Routes>
     </Router>
     </>
