@@ -1,12 +1,13 @@
 import Posts from '../components/NavBar/Posts'
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Posteos(){
   const posts = Posts()
+  const navegate = useNavigate();
   
   //Funciones para alertas de botones
   const handleRead = (num) =>{ 
-    alert(`LEER posteo ID ${num}`);
+    navegate(`/posteos/leer/:${num}`)
   };
   const handleSet = (num) =>{ 
     alert(`MODIFICAR posteo ID ${num}`);
@@ -18,7 +19,7 @@ export default function Posteos(){
       <div className="buttons">
          <button onClick={(e)=>{
             e.preventDefault();
-             <Navigate to="/leer"/>}}>LEER</button>
+             handleRead(post.id)}}>LEER</button>
          <button onClick={(e)=>{
             e.preventDefault();
             handleSet(post.id)}}>MODIFICAR</button>

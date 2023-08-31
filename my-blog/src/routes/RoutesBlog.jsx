@@ -14,7 +14,7 @@ export default function RoutesBlog() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/posteos" element={<Posteos/>}/>
-            <Route path='/leer/:id' element={<LeerPost/>}/>
+            <Route path='posteos/leer/:id' element={<LeerPost/>}/>
             <Route path="/crear" element={<Crear/>}/>
         </Routes>
     </Router>
